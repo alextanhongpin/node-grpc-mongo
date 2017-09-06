@@ -1,5 +1,5 @@
-const messages = require('./proto/transaction_pb')
-const services = require('./proto/transaction_grpc_pb')
+const messages = require('../proto/transaction_pb')
+const services = require('../proto/transaction_grpc_pb')
 
 const grpc = require('grpc')
 

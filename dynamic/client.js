@@ -1,7 +1,7 @@
 const grpc = require('grpc')
 const path = require('path')
 
-const transactionProto = grpc.load(path.join(__dirname, 'proto/transaction.proto')).transaction
+const transactionProto = grpc.load(path.join(__dirname, '../proto/transaction.proto')).transaction
 function main () {
   const client = new transactionProto.Transaction('localhost:50051', grpc.credentials.createInsecure())
 
