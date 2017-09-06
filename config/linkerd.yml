@@ -1,22 +1,28 @@
 routers:
 # Suppose to be able to curl localhost:4140 to get
 # the same results as make a call to localhost:4140
-# - label: outgoing
-#   protocol: http
-#   interpreter:
-#     kind: io.l5d.namerd
-#     dst: /$/inet/namerd/4100
-#     transformers:
-#       - kind: io.l5d.port
-#         port: 4141
-#   servers:
-#   - port: 4140
-#     ip: 0.0.0.0
+- label: outgoing
+  protocol: http
+  interpreter:
+    kind: io.l5d.namerd
+    dst: /$/inet/namerd/4100
+    # transformers:
+    # - kind: io.l5d.specificHost
+    #   host: docker.for.mac.localhost
+    transformers:
+      - kind: io.l5d.port
+        port: 4141
+  servers:
+  - port: 4140
+    ip: 0.0.0.0
 
 - protocol: http
   interpreter:
     kind: io.l5d.namerd
     dst: /$/inet/namerd/4100
+    transformers:
+    - kind: io.l5d.specificHost
+      host: docker.for.mac.localhost
   servers:
   - port: 4141
     ip: 0.0.0.0
