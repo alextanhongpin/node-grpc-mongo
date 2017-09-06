@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package transaction;
 
-// import "google/api/annotations.proto";
+import "google/api/annotations.proto";
 
 message TransactionRequest {
     string id = 1;
@@ -29,8 +29,8 @@ message TransactionReply {
 
 service Transaction {
     rpc GetTransaction (TransactionRequest) returns (TransactionReply) {
-        // option (google.api.http) = {
-        //     get: "/v1/transactions"
-        // };
+        option (google.api.http) = {
+            get: "/v1/transactions"
+        };
     }
 }
