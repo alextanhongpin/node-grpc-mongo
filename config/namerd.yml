@@ -1,0 +1,18 @@
+admin:
+  port: 9991
+
+namers: []
+storage:
+  kind: io.l5d.inMemory
+  namespaces:
+    default: |
+      /host/proto.GetTransaction => /$/inet/transaction/8080;
+      /grpc                      => /host;
+      /svc                       => /host/web;
+interfaces:
+- kind: io.l5d.thriftNameInterpreter
+  ip: 0.0.0.0
+  port: 4100
+- kind: io.l5d.httpController
+  ip: 0.0.0.0
+  port: 4180

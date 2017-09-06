@@ -1,5 +1,5 @@
 {
-  "name": "node-grpc-mongo",
+  "name": "grpc-mongo",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -8,5 +8,19 @@
     "grpc": "^1.6.0",
     "mongodb": "^2.2.31",
     "yarn": "^0.27.5"
-  }
+  },
+  "description": "Note that `.env` is not normally committed to the repository. For demonstration purpose on how to manage environment variables, this file is included in this repo.",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node dynamic/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alextanhongpin/node-grpc-mongo.git"
+  },
+  "author": "alextanhongpin <alextan@seekasia.com>",
+  "bugs": {
+    "url": "https://github.com/alextanhongpin/node-grpc-mongo/issues"
+  },
+  "homepage": "https://github.com/alextanhongpin/node-grpc-mongo#readme"
 }
