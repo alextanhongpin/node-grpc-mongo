@@ -21,9 +21,14 @@ message TransactionResponse {
     Type type = 6;
 }
 
+message TransactionReply {
+    string _id = 1;
+    string name = 2;
+    float price = 3;
+}
 
 service Transaction {
-    rpc GetTransaction (TransactionRequest) returns (TransactionResponse) {
+    rpc GetTransaction (TransactionRequest) returns (stream TransactionReply) {
         // option (google.api.http) = {
         //     get: "/v1/transactions"
         // };

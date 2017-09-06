@@ -1,25 +1,25 @@
 const path = require('path')
 const grpc = require('grpc')
-const port = process.env.PORT || 50051
 
 const MongoClient = require('mongodb').MongoClient
-const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/demo'
+
+const port = process.env.PORT
+const mongoUri = process.env.MONGO_URI
 
 // We store our database as a global variable
 let db = null
 
 const transaction = grpc.load(path.join(__dirname, '../proto/transaction.proto')).transaction
 
-async function getTransaction (call, callback) {
-  const data = await db.collection('transactions').find().toArray()
-  console.log(data)
-  callback(null, {
-    id: '1',
-    created_at: Date.now(),
-    updated_at: Date.now(),
-    name: 'somethin',
-    amount: 4.50,
-    type: 'EXPENSE'
+// TODO: Change this to streaming approach
+async function getTransaction (call) {
+  const cursor = await db.collection('transactions').find()
+
+  cursor.on('data', (doc) => {
+    doc._id = doc._id.toString()
+    call.write(doc)
+  }).on('end', () => {
+    call.end()
   })
 }
 
