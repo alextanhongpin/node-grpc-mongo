@@ -12,7 +12,8 @@
   "description": "Note that `.env` is not normally committed to the repository. For demonstration purpose on how to manage environment variables, this file is included in this repo.",
   "devDependencies": {},
   "scripts": {
-    "start": "node dynamic/server"
+    "start": "node dynamic/server",
+    "client": "node dynamic/client"
   },
   "repository": {
     "type": "git",
