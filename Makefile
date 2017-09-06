@@ -1,3 +1,5 @@
+PORT=3000
+
 build-server:
 	echo "Building alextanhongpin/node-grpc-server"
 	docker build -t alextanhongpin/node-grpc-server .
@@ -11,3 +13,6 @@ up:
 
 call:
 	curl http://localhost:4000
+
+shout:
+	echo ${PORT}

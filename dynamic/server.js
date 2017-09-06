@@ -19,6 +19,7 @@ async function getTransaction (call, callback) {
   //   price: 1234.50
   // })
   // call.end()
+  console.log('called endpoint', call.request)
   const data = {
     _id: '123456789',
     name: 'john.doe',

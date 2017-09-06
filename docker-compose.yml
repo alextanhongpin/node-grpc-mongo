@@ -12,12 +12,14 @@ services:
 
   server:
     image: alextanhongpin/node-grpc-server:latest
-    container_name: transactions
+    container_name: transaction
     ports:
       - 8080:8080
     environment:
       - MONGO_URI=mongodb://mongodb:27017/demo
       - PORT=8080
+    depends_on:
+      - mongodb
 
   mongodb:
     image: mongo:latest
