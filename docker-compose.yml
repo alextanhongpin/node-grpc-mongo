@@ -1,7 +1,14 @@
 version: '3'
 
 services:
-  node:
+  client:
+    image: alextanhongpin/node-grpc-client:latest
+    ports:
+      - 4000:8080
+    environment:
+      - GRPC_HOST=linkerd:4142
+
+  server:
     image: alextanhongpin/node-grpc:latest
     ports:
       - 8080:8080

@@ -1,7 +1,10 @@
+const Koa = require('koa')
 const grpc = require('grpc')
 const path = require('path')
 const port = process.env.PORT || 8080
 const grpcHost = process.env.GRPC_HOST
+
+const app = new Koa()
 
 const transactionProto = grpc.load(path.join(__dirname, '../proto/transaction.proto')).transaction
 
@@ -25,3 +28,5 @@ function main () {
 }
 
 main()
+app.listen(port)
+console.log(`listening to port *:${port}. press ctrl + c to cancel.`)

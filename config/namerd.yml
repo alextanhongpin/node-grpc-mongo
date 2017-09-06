@@ -6,9 +6,10 @@ storage:
   kind: io.l5d.inMemory
   namespaces:
     default: |
-      /host/proto.GetTransaction => /$/inet/transaction/8080;
-      /grpc                      => /host;
-      /svc                       => /host/web;
+      /host/web                        => /$/inet/web/4000;
+      /host/transaction.GetTransaction => /$/inet/transaction/8080;
+      /grpc                            => /host;
+      /svc                             => /host/web;
 interfaces:
 - kind: io.l5d.thriftNameInterpreter
   ip: 0.0.0.0
