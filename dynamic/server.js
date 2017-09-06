@@ -12,15 +12,27 @@ let db = null
 const transaction = grpc.load(path.join(__dirname, '../proto/transaction.proto')).transaction
 
 // TODO: Change this to streaming approach
-async function getTransaction (call) {
-  const cursor = await db.collection('transactions').find()
+async function getTransaction (call, callback) {
+  // call.write({
+  //   _id: '123456789',
+  //   name: 'john.doe',
+  //   price: 1234.50
+  // })
+  // call.end()
+  const data = {
+    _id: '123456789',
+    name: 'john.doe',
+    price: 1234.50
+  }
+  callback(null, data)
+  // const cursor = await db.collection('transactions').find()
 
-  cursor.on('data', (doc) => {
-    doc._id = doc._id.toString()
-    call.write(doc)
-  }).on('end', () => {
-    call.end()
-  })
+  // cursor.on('data', (doc) => {
+  //   doc._id = doc._id.toString()
+  //   call.write(doc)
+  // }).on('end', () => {
+  //   call.end()
+  // })
 }
 
 async function main () {

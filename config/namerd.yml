@@ -7,7 +7,7 @@ storage:
   namespaces:
     default: |
       /host/web                        => /$/inet/web/4000;
-      /host/transaction.GetTransaction => /$/inet/transaction/8080;
+      /host/transaction.GetTransaction => /$/inet/transactions/8080;
       /grpc                            => /host;
       /svc                             => /host/web;
 interfaces:

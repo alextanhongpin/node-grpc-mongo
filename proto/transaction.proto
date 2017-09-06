@@ -28,7 +28,7 @@ message TransactionReply {
 }
 
 service Transaction {
-    rpc GetTransaction (TransactionRequest) returns (stream TransactionReply) {
+    rpc GetTransaction (TransactionRequest) returns (TransactionReply) {
         // option (google.api.http) = {
         //     get: "/v1/transactions"
         // };

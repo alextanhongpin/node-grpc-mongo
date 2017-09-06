@@ -7,6 +7,7 @@
     "google-protobuf": "^3.4.0",
     "grpc": "^1.6.0",
     "koa": "^2.3.0",
+    "koa-router": "^7.2.1",
     "mongodb": "^2.2.31",
     "yarn": "^0.27.5"
   },

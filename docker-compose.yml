@@ -3,18 +3,28 @@ version: '3'
 services:
   client:
     image: alextanhongpin/node-grpc-client:latest
+    container_name: web
     ports:
       - 4000:8080
     environment:
-      - GRPC_HOST=linkerd:4142
+     - GRPC_HOST=linkerd:4142
+    # - GRPC_HOST=transactions:8080
 
   server:
-    image: alextanhongpin/node-grpc:latest
+    image: alextanhongpin/node-grpc-server:latest
+    container_name: transactions
     ports:
       - 8080:8080
     environment:
-      - MONGO_URI=mongodb://docker.for.mac.localhost:27017/demo
+      - MONGO_URI=mongodb://mongodb:27017/demo
       - PORT=8080
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/db:/data/db
   
   linkerd:
     image: buoyantio/linkerd:latest
